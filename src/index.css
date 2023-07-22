@@ -1,14 +1,39 @@
-*{
-  background-color: grey;
+:root{
+  --colorTextos: #cfcfcf;
 }
+body{
+ background-image: url(/public/wallpaperflare.com_wallpaper.jpg);
+}
+.formAll{
+  margin: 0%;
+  position: fixed;
+  border-radius: 3rem;
+  inset: 0;
+  background-color: #ffffff81;
+  backdrop-filter: blur(20px);
+  top:-10;
+  height: fit-content;
+  margin: 1rem 2rem;
+  padding-bottom: 1rem;
+  padding-top: 3rem;
+  max-width: 800px;
+  margin: auto;
+  z-index: 100;
+  }
+  .input::placeholder{
+    font-size: 0.9rem;
+  }
 .title{
  display: flex;
  justify-content: center;
  margin-top: 1rem;
- color: white;
  font-size: 2rem;
  text-shadow:10px 10px 10px rgba(0, 0, 0, 0.459) ;
  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.close{
+  position: absolute;
+  right: 1rem;
 }
 .input-container{
   display: flex;
@@ -16,33 +41,137 @@
   margin-top: 1rem;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+.titleList{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0px ;
+  font-size: 2.5rem;
+}
+.sendData {
+  display: flex;
+ justify-content: center;
+ font-size: 2rem;
+ text-shadow:10px 10px 10px rgba(0, 0, 0, 0.459) ;
+ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ }
+ .sendData button{
+  font-family:Arial, Helvetica, sans-serif;
+  font-style: unset;
+  margin-top: 20px;
+  background: linear-gradient(to left, #360033, #0b8793); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 20px;
+  border: none;
+  height: 30px;
+  width: 100px;
+  color: white;
+  transform: scale(1.2);
+ }
 .send{
   margin: 4rem;
   padding: .5rem;
   border-radius: 20px 10px ;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+input{
+  background: none;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 50%;
+  border: none;
+  border-bottom: 1px solid var(--colorTextos);
+}
+input:focus{
+  outline: none;
+  color: rgb(94,93,93);
+}
+input .container{
+  color: var(--colorTextos);
+  font-size: 16px;
+  position: absolute;
+  left: 5px;
+  top:10px;
+  transition: .5s ease-in-out all;
+  pointer-events: none;
+}
+input:focus~.container{
+  top: -14px;
+}
+
 .eraser{
-  border-radius: 20px 10px;
+  padding: 7px 20px;
+  display: flex;
+  border-radius: 100px;
+  color:#fff;
+  border: none;
+  background: #0e063371;
+  cursor: pointer;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 500;
+  transition: .3s ease all;
+  background: linear-gradient(to right, #C6426E, #642B73);
   }
   .edit{
-    border-radius: 20px 10px;
- }
- .allList{
+    padding: 7px 28px;
   display: flex;
-  justify-content: center;
- font-size: small;
- font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
- }
-.containerButton{
-  padding: 10px 30px;
-  display: block;
  border-radius: 100px;
  color:#fff;
  border: none;
- background: #1766DC;
+ background: #0e063371;
  cursor: pointer;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: 500;
   transition: .3s ease all;
+  background: linear-gradient(to left, #360033, #0b8793); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ }
+ .allList{
+ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ padding-bottom: 1rem;
+ backdrop-filter: blur(10px);
+ margin-top: 5rem;
+ }
+ ul{
+  padding: 0;
+ }
+ .users{
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+ }
+.containerButton{
+  position: absolute;
+  right: 5rem;
+  top: 2rem;
+  padding: 7px 30px;
+  border-radius: 100px;
+  color:#fff;
+  border: none;
+  background: #642B73;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #C6426E, #642B73);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #C6426E, #642B73); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  cursor: pointer;
+  margin-block-end: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 500;
+  transition: .3s ease all;
+  transform: scale(1.4);
 }
+
+.bdUser{
+  border: 1px solid #642B73;
+  padding: 1rem;
+  border-radius: 2rem;
+  background-color: #ffffffb6;
+  backdrop-filter: blur(100px);
+  color:#1b082b;
+}
+.buttons{
+  display: flex;
+  justify-content: space-around;
+}
+

@@ -1,13 +1,15 @@
 import UsersForm from "./component/UsersForm";
 import UsersList from "./component/UsersList";
-import Modal from "./component/Modal";
+import styled from "@emotion/styled";
 import { useState, useEffect } from "react";
 import axios from "axios"
+import { Toaster, toast } from "sonner";
 
 
 function App() {
   const [usersList, setUsersList] = useState([]);
   const [usersSelected, setUsersSelected] = useState(null);
+ 
 
   const getAllUsers = () => {
     axios
@@ -26,15 +28,22 @@ function App() {
       .then(() => {
         getAllUsers();
         setUsersSelected(undefined);
+        toast.success(`El Usuario ${newUsers.first_name} ${newUsers.last_name} se ha creado correctamente`)
+        setIsModalVisible(!isModalVisible)
+
       })
       .catch((error) => console.error(error));
   };
 
-  const deleteUsers = (id) => {
+  const deleteUsers = (users) => {
  
     axios
-      .delete(`https://users-crud.academlo.tech/users/${id}/`)
-      .then(() => getAllUsers())
+      .delete(`https://users-crud.academlo.tech/users/${users.id}/`)
+      .then(() => {
+        getAllUsers()
+        toast.error(`El Usuario ${users.first_name} ${users.last_name} se ha eliminado`)
+      
+      })
       .catch((error) => console.error(error));
   };
 
@@ -52,26 +61,37 @@ function App() {
       .then(() => {
         getAllUsers();
         setUsersSelected(null);
+        setIsModalVisible(!isModalVisible)
       })
       .catch((error) => console.error(error));
   };
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const handlerClick = () => {
+    setIsModalVisible(!isModalVisible)
+
+    
+  }
 
   return (
     <main>
+
+       <Toaster richColors/>
       <UsersForm
         addUsers={addUsers}
         usersSelected={usersSelected}
         editUsers={editUsers}
+        handlerClick={ handlerClick}
+        isModalVisible={isModalVisible}
       />
 
       <UsersList
         usersList={usersList}
         deleteUsers={deleteUsers}
         selectUsers={selectUsers}
+        handlerClick={ handlerClick}
       />
-      <div>
-        <button className="containerButton">Nuevo Usuario</button>
-      </div>
+     
     </main>
    
   );

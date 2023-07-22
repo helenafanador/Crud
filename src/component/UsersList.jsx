@@ -1,32 +1,36 @@
-const UsersList = ({ usersList, deleteUsers, selectUsers }) => {
+const UsersList = ({ usersList, deleteUsers, selectUsers, handlerClick }) => {
     
-    console.log(usersList)
     
     return (
       <section className="allList">
         <h2 className="titleList">Lista de Usuarios</h2>
-  
-        <ul>
+        <ul className="users">
+        
           {usersList?.map((users) => (
-            <li key={users.id}>
+            <li key={users.id} className="bdUser">
               <h4>{users.name}</h4>
               <p>
-                Nombre: {users.first_name}
+               <b> Nombre:</b> {users.first_name}
               </p>
               <p>
-                Apellido: {users.last_name}
+               <b> Apellido:</b> {users.last_name}
               </p>
               <p>
-                Email: {users.email}
+              <b>Email:</b> {users.email}
               </p>
               <p>
                 <b>Fecha de Nacimiento:</b> {users.birthday}
               </p>
              
+               <div className="buttons">
+               <button onClick={() => deleteUsers(users)} className="eraser">Eliminar</button>
   
-              <button onClick={() => deleteUsers(users.id)} className="eraser">Eliminar</button>
-  
-              <button onClick={() => selectUsers(users)}className="edit">Editar</button>
+                <button onClick={() => {
+                  selectUsers(users)
+                handlerClick()
+                }}className="edit">Editar</button>
+               </div>
+              
             </li>
           ))}
         </ul>
