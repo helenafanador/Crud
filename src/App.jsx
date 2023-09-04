@@ -13,7 +13,7 @@ function App() {
 
   const getAllUsers = () => {
     axios
-      .get('https://users-crud.academlo.tech/users/')
+      .get('https://users-crud-dv3n.onrender.com/users')
       .then((resp) => setUsersList(resp.data))
       .catch((error) => console.error(error));
   };
@@ -24,7 +24,7 @@ function App() {
 
   const addUsers = (newUsers) => {
        axios
-      .post("https://users-crud.academlo.tech/users/", newUsers)
+      .post("https://users-crud-dv3n.onrender.com/users", newUsers)
       .then(() => {
         getAllUsers();
         setUsersSelected(undefined);
@@ -38,7 +38,7 @@ function App() {
   const deleteUsers = (users) => {
  
     axios
-      .delete(`https://users-crud.academlo.tech/users/${users.id}/`)
+      .delete(`https://users-crud-dv3n.onrender.com/users/${users.id}`)
       .then(() => {
         getAllUsers()
         toast.error(`El Usuario ${users.first_name} ${users.last_name} se ha eliminado`)
@@ -55,7 +55,7 @@ function App() {
  
     axios
       .put(
-        `https://users-crud.academlo.tech/users/${users.id}/`,
+        `https://users-crud-dv3n.onrender.com/users/${users.id}`,
         users
       )
       .then(() => {
